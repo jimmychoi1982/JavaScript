@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+
+</head>
+
+<body>
+<form>
+<input type="text" value="0" name="txt1" />
+<input type="button" value="Start" name="btnStart" />
+<input type="button" value="Stop" name="btnReset" />
+</form>
+
+<script type="text/javascript">
+
+var txt = document.forms[0].elements["txt1"];
+var btnStart = document.forms[0].elements["btnStart"];
+var btnReset = document.forms[0].elements["btnReset"];
+
+var id;
+
+var seed = 0;
+
+btnStart.onclick = function(){
+
+  if(this.value == "Start"){
+  this.value = "Pause";
+  btnReset.disabled = true;
+  id = window.setInterval(tip, 10);
+  }else {
+  this.value = "Start";
+  btnReset.disabled = false;
+  window.clearInterval(id);
+  }
+}
+
+btnReset.onclick = function(){
+  seed = 0;
+  txt.value = 0;
+}
+
+function tip()
+{
+  seed++;
+  txt.value = seed / 100;
+}
+
+</script>
+
+</body>
+
+</html>
